@@ -40,10 +40,12 @@ document.getElementById('reset').addEventListener('click', () => {
   playerScoreElem.textContent = 0;
   computerScoreElem.textContent = 0;
 });
-document.getElementById('player-paddle').addEventListener('touchmove', (e) => {
+document.addEventListener('touchmove', (e) => {
+  e.preventDefault();
   playerPaddle.position = (e.touches[0].pageY / window.innerHeight) * 100;
 });
 document.addEventListener('mousemove', (e) => {
+  e.preventDefault();
   playerPaddle.position = (e.y / window.innerHeight) * 100;
 });
 window.requestAnimationFrame(update);
