@@ -2,7 +2,7 @@ const SPEED = 0.02;
 export default class Paddle {
   constructor(paddleElem) {
     this.paddleElem = paddleElem;
-    this.reset();
+    // this.reset();
   }
   get position() {
     return parseFloat(getComputedStyle(this.paddleElem).getPropertyValue('--position'));
@@ -17,7 +17,7 @@ export default class Paddle {
     this.position = 50;
   }
   update(delta, ballHeight) {
-    if (ballHeight !== null) {
+    if (ballHeight > 50 || ballHeight < 50) {
       this.position += SPEED * delta * (ballHeight - this.position);
     }
   }

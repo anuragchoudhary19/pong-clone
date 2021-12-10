@@ -9,7 +9,7 @@ let lastTime;
 
 function update(time) {
   if (lastTime != null) {
-    const delta = time - lastTime;
+    const delta = parseInt(time - lastTime);
     ball.update(delta, [playerPaddle.rect(), computerPaddle.rect()]);
     computerPaddle.update(delta, ball.y);
     const hue = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hue'));
@@ -19,15 +19,13 @@ function update(time) {
     }
   }
   lastTime = time;
-
   window.requestAnimationFrame(update);
 }
 function isLose() {
   const rect = ball.rect();
   const gameArenaWidth = document.getElementById('game-arena').offsetWidth;
-  console.log(gameArenaWidth);
   if (window.innerWidth <= 600) {
-   return rect.right >= window.innerWidth || rect.left <= 0;
+    return rect.right >= window.innerWidth || rect.left <= 0;
   }
   return (
     rect.right >= (window.innerWidth + gameArenaWidth) / 2 || rect.left <= (window.innerWidth - gameArenaWidth) / 2
@@ -57,4 +55,7 @@ document.addEventListener('mousemove', (e) => {
   e.preventDefault();
   playerPaddle.position = (e.y / window.innerHeight) * 100;
 });
-window.requestAnimationFrame(update);
+function startAnimation() {
+  window.requestAnimationFrame(update);
+}
+window.onload = startAnimation;
