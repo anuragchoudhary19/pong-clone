@@ -26,6 +26,9 @@ function isLose() {
   const rect = ball.rect();
   const gameArenaWidth = document.getElementById('game-arena').offsetWidth;
   console.log(gameArenaWidth);
+  if (window.innerWidth <= 600) {
+   return rect.right >= window.innerWidth || rect.left <= 0;
+  }
   return (
     rect.right >= (window.innerWidth + gameArenaWidth) / 2 || rect.left <= (window.innerWidth - gameArenaWidth) / 2
   );
