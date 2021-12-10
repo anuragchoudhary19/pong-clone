@@ -1,4 +1,4 @@
-const INITIAL_VELOCITY = 0.05;
+const INITIAL_VELOCITY = 0.025;
 const VELOCITY_INCREMENT = 0.000001;
 export default class Ball {
   constructor(ballElem) {
@@ -29,7 +29,6 @@ export default class Ball {
       this.direction = { x: Math.cos(heading), y: Math.sin(heading) };
     }
     this.velocity = INITIAL_VELOCITY;
-    console.log(this.direction);
   }
   update(delta, paddleRects) {
     this.x += this.direction.x * this.velocity * delta;

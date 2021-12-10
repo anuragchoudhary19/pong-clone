@@ -10,6 +10,8 @@ body {
   background-color: var(--background-color);
   position: relative;
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 :root {
   --hue: 200;
@@ -22,6 +24,15 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
+}
+@media (min-width: 600px) {
+  .game-area {
+    display: flex;
+    position: relative;
+    width: 40vw;
+    height: 100vh;
+    margin: 0 auto;
+  }
 }
 .paddle {
   --position: 50;
@@ -43,8 +54,8 @@ body {
   --y: 50;
   position: absolute;
   background-color: var(--foreground-color);
-  left: calc(var(--x) * 1vw);
-  top: calc(var(--y) * 1vh);
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
   border-radius: 50%;
   transform: translateY(-50%, -50%);
   width: 2.5vh;
@@ -90,5 +101,14 @@ body {
 .reset-button:hover {
   background-color: black;
   border: 1px solid white;
+  color: white;
+}
+
+.createdBy {
+  position: absolute;
+  top: auto;
+  bottom: 1em;
+  left: 50%;
+  transform: translateX(-50%);
   color: white;
 }

@@ -24,7 +24,11 @@ function update(time) {
 }
 function isLose() {
   const rect = ball.rect();
-  return rect.right >= window.innerWidth || rect.left <= 0;
+  const gameArenaWidth = document.getElementById('game-arena').offsetWidth;
+  console.log(gameArenaWidth);
+  return (
+    rect.right >= (window.innerWidth + gameArenaWidth) / 2 || rect.left <= (window.innerWidth - gameArenaWidth) / 2
+  );
 }
 function handleLoose() {
   const rect = ball.rect();
@@ -37,6 +41,8 @@ function handleLoose() {
   computerPaddle.reset();
 }
 document.getElementById('reset').addEventListener('click', () => {
+  ball.reset();
+  computerPaddle.reset();
   playerScoreElem.textContent = 0;
   computerScoreElem.textContent = 0;
 });
